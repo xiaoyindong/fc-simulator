@@ -1,8 +1,7 @@
 const fs = require('fs');
 // const path = require('path');
 const jsnes = require('jsnes');
-const { setTimeout } = require('timers');
-var vConsole = new VConsole();
+// var vConsole = new VConsole();
 
 class Simulator {
     uninstall = false;

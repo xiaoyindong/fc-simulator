@@ -9,7 +9,7 @@
   "homepage": "https://madaozhijian.com",
   "description": "FC游戏模拟器",
   "window": {
-    "title": "FC游戏模拟器",
+    "title": "我的应用",
     "icon": "assest/img/logo.png",
     "position": "center",
     "width": 800,
