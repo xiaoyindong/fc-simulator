@@ -2,6 +2,8 @@
 
 非本人原创，忘记在哪clone的了，因为着急先发一版，后面补齐出处。如侵权请isu，立删。
 
+#### 开始
+
 双击main.html文件打开，拖拽Super Mario Bros. (World).nes进入即可开始游戏。
 
 支持nes后缀游戏，可以自行在网上下载，仅支持Mapper0，Mapper1，Mapper2，Mapper3类型。
