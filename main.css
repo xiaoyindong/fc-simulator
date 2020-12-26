@@ -1,0 +1,125 @@
+.drop{
+    width:100%;
+    height:40px;
+    background-color: azure;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    text-align: center;
+}
+.drop span{
+    display: inline-block;
+    margin:0 auto;
+    font-size: 14px;
+    line-height: 40px;
+    color:#303030;
+}
+.content{
+    color:#303030;
+    margin:0 auto;
+    width:1035px;
+}
+
+
+.display{
+    text-align: center;
+    margin-top:10px;
+    margin-bottom:10px;
+    border:1px dashed deepskyblue;
+}
+.display canvas{
+    margin:0 0;
+    display: inline-block;
+    /* float:left; */
+    /* margin:0 auto; */
+    /* border:1px solid black; */
+}
+.display canvas.deb{
+    display:none;
+}
+
+
+.control{
+    width:100%;
+    margin: 0 auto;
+}
+.control button{
+    width:140px;
+    margin-left:23px;
+}
+
+
+div.info{
+    margin-top: 10px;
+    background:lightblue;
+    padding:5px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    color:#303030;
+}
+
+
+div.text{
+    width:700px;
+    margin:0 auto;
+    margin-bottom: 10px;
+    color:#303030;
+}
+div.text span{
+    display: inline-block;
+    text-align: center;
+    margin:1px 5px;
+    width:30px;
+    border:1px solid lightgray;
+    padding:3px;
+    color:darkslateblue;
+    background-color: rgb(238, 238, 238);
+    border-radius: 3px;
+}
+
+div.debugger{
+    display:none;
+    margin-top:20px;
+    padding-bottom: 20px;
+    background-color:rgb(243, 243, 243);
+    min-height: 50px;
+}
+div.debugger .cpu{
+    padding:1px 30px;
+    font-size: 14px;
+    line-height: 20px;
+}
+div.debugger .control-btn button{
+    width:140px;
+    margin-left:23px;
+}
+div.debugger .bp{
+    font-size: 14px;
+    padding:10px 23px;
+}
+div.debugger .watch{
+    font-size: 14px;
+    padding:10px 23px;
+}
+.watch .title{
+    background:rgb(194, 219, 233);
+}
+div.debugger span.bp{
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    margin:3px;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border:1px solid black;
+    border-radius: 3px;
+}
+span.bp.enable{
+    border-color: green;
+    background: lightgreen;
+}
+.watch .data{
+    padding: 5px;
+    font-size: 16px;
+    line-height: 20px;
+}

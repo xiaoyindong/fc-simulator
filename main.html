@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <script src="./emu_core_js/utils.js"></script>
+    <script src="./emu_core_js/cpu.js"></script>
+    <script src="./emu_core_js/ppu.js"></script>
+    <script src="./emu_core_js/apu.js"></script>
+    <script src="./emu_core_js/ppumemory.js"></script>
+    <script src="./emu_core_js/cpumemory.js"></script>
+    <script src="./emu_core_js/machine.js"></script>
+    <script src="./emu_core_js/mapper.js"></script>
+    <script src="./emu_core_js/joystick.js"></script>
+    <script src="./emu_core_js/ines.js"></script>
+    <script src="./demoGame.min.js"></script>
+    <script src="./emu_core_js/debugger.js"></script>
+    <script src="./emu_core_js/dragdrop.js"></script>
+    <title>NES / FC 模拟器</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="drop"><span>从浏览器外拖拽 .nes 格式rom文件 到此页面可载入</span></div>
+        <div class="info">
+            <p> 本模拟器非高精度模拟，APU尚未实现DMC和噪声通道，DMC对应的IRQ功能不支持。默认使用控制方案1。推荐使用chrome浏览器</p>
+            <p> 卡带mapper支持0,1,2,3号，其中mapper1部分变体没有支持。默认运行自带开源DEMO游戏：github.com/NovaSquirrel/NovaTheSquirrel</p>
+            <div class="text"> 1P控制方案1： <span>↑</span> / <span>↓</span> / <span>←</span> / <span>→</span> A:
+                <span>Z</span>
+                B: <span>X</span> SELECT:<span>2</span> START:<span>1</span>
+                <br>1P控制方案2： <span>W</span> / <span>S</span> / <span>A</span> / <span>D</span> A: <span>K</span> B:
+                <span>J</span>
+                SELECT:<span>G</span> START:<span>H</span>
+            </div>
+        </div>
+        <div class="display">
+            <canvas class="screen" width="512" height="480"></canvas>
+            <canvas class="deb" width="512" height="480"></canvas>
+        </div>
+        <div class="control">
+
+            <button id="run-machine">开始运行模拟</button>
+            <button id="pause">暂停 / 恢复</button>
+            <button id="control-type1">使用控制方案1</button>
+            <button id="control-type2">使用控制方案2</button>
+            <button id="raw-size">切换1x/2x方式渲染</button>
+            <button id="toggle-debug-panel">开/关 DEBUG面板</button>
+        </div>
+        <div class="debugger">
+            <div class="cpu">
+                <!--CPU状态预留位置 -->
+                <p class="cpu-status">debug时请先暂停模拟。断点功能在多步执行、单帧执行时有效。<br>
+                    在断点处停止后，请使用单步功能跳过断点<br>CPU状态和内存状态只有在调试动作时刷新</p>
+            </div>
+            <hr>
+            <div class="control-btn">
+                <button id="step">单步执行</button>
+                <button id="step-100">执行100步</button>
+                <button id="one-frame">执行到vblank之前</button>
+                <button id="dump-full-bg">刷新查看4块背景</button>
+                <button id="dump-temp-bg">刷新查看临时背景</button>
+                <button id="hide-debug-canvas">关闭DEBUG canvas</button>
+            </div>
+            <hr>
+            <div class="bp">
+                <div> 添加断点 (以0x开头的16进制地址，只在单步、多步、整帧调试时有用) &nbsp;&nbsp;<input type="text" id="bp-addr"> <button id="add-bp">添加</button>
+                    <input type="checkbox" id="bp-on">启用断点功能 <button id="clear-bp">清除所有断点</button></div>
+                <div>
+                    <p>断点列表 （点击切换状态，绿色有效，灰色停用。如果不勾选上方启用断点功能，列表断点始终是灰色）</p>
+                    <div class="bplist">
+                        <!-- 断点列表预留位置 -->
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="watch">
+                <div>内存监看 (以0x开头的16进制地址)&nbsp;&nbsp;<input id="watch-addr" type="text"> 行数(每行16字节)<input id="watch-lines" type="text">
+                    <button id="add-watch">添加</button></div>
+                <ul>
+                    <!-- <li>
+                        <div class="title">
+                            <span>起始：$0000</span> <button>关闭</button>
+                        </div>
+                        <div class="data" data-id="1561345065">$01A0:00 00 00 00 FF FF FF FF 00 00 00 00 FF FF FF FF
+                        </div>
+                    </li>
+                    <li></li>
+                    <li></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
